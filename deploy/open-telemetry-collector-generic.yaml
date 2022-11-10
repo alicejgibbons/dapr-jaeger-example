@@ -34,7 +34,6 @@ data:
         endpoint: "jaeger-collector.default.svc.cluster.local:14250"
         tls:
           insecure: true
-        
     service:
       extensions: [pprof, zpages, health_check]
       pipelines:
@@ -91,7 +90,7 @@ spec:
             cpu: 200m
             memory: 400Mi
         ports:
-          - containerPort: 9411 # Default endpoint for Zipkin receiver.
+          - containerPort: 4317 # Default endpoint for OTEL receiver.
         volumeMounts:
           - name: otel-collector-config-vol
             mountPath: /conf
