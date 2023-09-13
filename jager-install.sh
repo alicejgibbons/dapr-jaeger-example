@@ -1,10 +1,10 @@
 # Jaegar Tracing Installation instructions
 
-# Install Dapr
+# Use Conductor or install Dapr with Helm
 helm repo add dapr https://dapr.github.io/helm-charts/
 helm repo update
 helm upgrade --install dapr dapr/dapr \
---version=1.9 \
+--version=1.11.3 \
 --namespace dapr-system \
 --create-namespace \
 --wait
@@ -15,14 +15,14 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/
 
 # Install the Jager operator
 kubectl create namespace observability
-kubectl create -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.39.0/jaeger-operator.yaml -n observability # <2>
+kubectl create -f https://github.com/jaegertracing/jaeger-operator/releases/download/v1.49.0/jaeger-operator.yaml -n observability # <2>
 kubectl get deployment jaeger-operator -n observability 
 
 # Apply operator config (dev/test)in default/default1 ns
 kubectl apply -f deploy/jaeger-operator.yaml 
 kubectl get jaeger
 
-# Apply Dapr components, jaeger configuration and sample app
+# Apply Dapr components, jaeger configuration, open-telemetry collector and sample app
 kubectl apply -f deploy/components
 kubectl apply -f deploy 
 

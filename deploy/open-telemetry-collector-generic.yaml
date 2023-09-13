@@ -31,7 +31,7 @@ data:
       # for full lists of trace exporters that you can use, and how to
       # configure them.
       jaeger:
-        endpoint: "jaeger-collector.default.svc.cluster.local:14250"
+        endpoint: "jaeger-collector.observability.svc.cluster.local:14250"
         tls:
           insecure: true
     service:

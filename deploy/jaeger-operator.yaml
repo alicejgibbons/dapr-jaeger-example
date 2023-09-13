@@ -2,13 +2,13 @@ apiVersion: jaegertracing.io/v1
 kind: "Jaeger"
 metadata:
   name: jaeger
-  namespace: default
+  namespace: observability
 spec:
   strategy: allInOne
   ingress:
     enabled: false
   allInOne:
-    image: jaegertracing/all-in-one:1.22
+    image: jaegertracing/all-in-one
     options:
       query:
         base-path: /jaeger
